@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path='/' element={<Countries/>}>
-          <Route path="xCountries" exact element={<Countries />} />
+          <Route path="xCountries" element={<Countries />} />
       </Route>
     </Routes>
     </BrowserRouter>
