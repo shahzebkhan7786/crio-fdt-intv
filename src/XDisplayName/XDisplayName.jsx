@@ -23,10 +23,10 @@ const XDisplay = () => {
             <h1>Full Name Display</h1>
             <form onSubmit={handleSubmit}>
                 <label for="firstName">First Name:</label>
-                <input required id='firstName' name='firstName' value={formData?.firstName} onChange={handleChange}/>
+                <input type='text' required id='firstName' name='firstName' value={formData?.firstName} onChange={handleChange}/>
                 <br/>
                 <label for="lastName">Last Name:</label>
-                <input required id='lastName' name='lastName' value={formData.lastName} onChange={handleChange}/>
+                <input type='text' required id='lastName' name='lastName' value={formData.lastName} onChange={handleChange}/>
                 <br/>
                 <button type='submit'>Submit</button>
             </form>
