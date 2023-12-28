@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const Stopwatch = () => {
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState(null);
     const [running, setRunning] = useState(false);
     const timerId = useRef(null);
     useEffect(()=>{
@@ -21,6 +21,7 @@ const Stopwatch = () => {
     }
 
     const displayTime = ()=>{
+        if(!time) return '0:00';
         let mm = Math.floor(time/60);
         let ss = time % 60;
         let min = mm > 9 ? mm : `0${mm}`;
