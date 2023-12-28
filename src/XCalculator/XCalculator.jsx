@@ -76,7 +76,7 @@ const XCalculator = () => {
         //     }
         let operands = [], higherOperator = null, operators = [], temp = "";
         for(let i = 0; i < str.length; i++){
-            if(+str[i] || i === 0){
+            if(+str[i] || i === 0 || +str[i]===0){
                 temp = temp.concat(str[i]);
             }
             else{
@@ -99,7 +99,7 @@ const XCalculator = () => {
                 if(higherOperator){
                     temp = operation(operands.pop(), temp, higherOperator);
                 }
-                operands.push(temp);
+                operands.push(`${temp}`);
             }
         }
         console.log(operands, operators)
@@ -112,12 +112,13 @@ const XCalculator = () => {
             operands.unshift(c)
         }
 
-        setAnswer(operands[0]);
+        console.log(operands, operators)
+        setAnswer(`${operands[0]}`);
     }
      return (
         <div>
             <h1>React Calculator</h1>
-            <input value={str}/>
+            <input value={str} type='text'/>
             {answer ? <p>{answer}</p> : null}
             <div className='buttonGrid'>
                 {displayButts()}
