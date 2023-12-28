@@ -30,7 +30,7 @@ const XDisplay = () => {
                 <br/>
                 <button type='submit'>Submit</button>
             </form>
-            {fullName ? <p>Full Name : {fullName}</p> : null}
+            {fullName ? <p>Full Name: {fullName}</p> : null}
         </div>
     );
 };
