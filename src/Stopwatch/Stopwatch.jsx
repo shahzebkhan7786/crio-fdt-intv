@@ -24,7 +24,7 @@ const Stopwatch = () => {
         if(!time) return '0:00';
         let mm = Math.floor(time/60);
         let ss = time % 60;
-        let min = mm > 9 ? mm : `0${mm}`;
+        let min = mm > 9 ? mm : `${mm}`;
         let sec = ss > 9 ? ss : `0${ss}`;
         return `${min} : ${sec}`
     }
