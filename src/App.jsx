@@ -6,6 +6,7 @@ import Countries from './countries/Countries'
 import Stopwatch from './Stopwatch/Stopwatch';
 import XDisplayName from './XDisplayName/XDisplayName';
 import XCounter from './XCounter/XCounter';
+import XCalculator from './XCalculator/XCalculator';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
         <Route  path="xStopwatch" exact Component={()=><Stopwatch />} />
         <Route  path="xDisplayName" exact Component={()=><XDisplayName />} />
         <Route  path="xCounter" exact Component={()=><XCounter />} />
+        <Route  path="XCalculator" exact Component={()=><XCalculator />} />
       </Routes>
     </BrowserRouter>
   )
