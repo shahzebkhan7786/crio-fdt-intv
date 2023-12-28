@@ -30,7 +30,7 @@ const Stopwatch = () => {
         }
         
         let sec = ss > 9 ? ss : `0${ss}`;
-        return `${min} : ${sec}`
+        return `${min}:${sec}`
     }
     return (
         <div>
