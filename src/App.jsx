@@ -5,6 +5,7 @@ import './App.css'
 import Countries from './countries/Countries'
 import Stopwatch from './Stopwatch/Stopwatch';
 import XDisplayName from './XDisplayName/XDisplayName';
+import XCounter from './XCounter/XCounter';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +17,7 @@ function App() {
         <Route  path="xCountries" exact Component={()=><Countries />} />
         <Route  path="xStopwatch" exact Component={()=><Stopwatch />} />
         <Route  path="xDisplayName" exact Component={()=><XDisplayName />} />
+        <Route  path="xCounter" exact Component={()=><XCounter />} />
       </Routes>
     </BrowserRouter>
   )
