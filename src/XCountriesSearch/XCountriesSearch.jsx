@@ -3,7 +3,7 @@ import Countries from '../countries/Countries';
 
 const XCountriesSearch = () => {
     const [searchText, setSearchText] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
+    const [filteredData, setFilteredData] = useState(null);
     const [data, setData] = useState([]);
 
     useEffect(()=>{
@@ -11,6 +11,7 @@ const XCountriesSearch = () => {
     }, [])
 
     useEffect(()=>{
+        if(!searchText?.length) return setFilteredData(null);
         searchCountries();
     }, [searchText])
 
@@ -61,7 +62,7 @@ const XCountriesSearch = () => {
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             <input style={{width: "300px", marginTop: "1rem"}} type='text' value={searchText} onChange={e=> setSearchText(e.target.value)}/>
-            <Countries parentData={filteredData.length ? filteredData : data} parent="XCountriesSearch"/>
+            <Countries parentData={filteredData ? filteredData : data} parent="XCountriesSearch"/>
         </div>
     );
 };
