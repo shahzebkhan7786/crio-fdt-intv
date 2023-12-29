@@ -8,6 +8,7 @@ import XDisplayName from './XDisplayName/XDisplayName';
 import XCounter from './XCounter/XCounter';
 import XCalculator from './XCalculator/XCalculator';
 import XLogin from './XLogin/XLogin';
+import XStates from './XStates/XStates';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,6 +23,7 @@ function App() {
         <Route  path="xCounter" exact Component={()=><XCounter />} />
         <Route  path="XCalculator" exact Component={()=><XCalculator />} />
         <Route  path="XLogin" exact Component={()=><XLogin />} />
+        <Route  path="XStates" exact Component={()=><XStates />} />
       </Routes>
     </BrowserRouter>
   )
