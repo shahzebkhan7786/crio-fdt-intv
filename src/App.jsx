@@ -7,6 +7,7 @@ import Stopwatch from './Stopwatch/Stopwatch';
 import XDisplayName from './XDisplayName/XDisplayName';
 import XCounter from './XCounter/XCounter';
 import XCalculator from './XCalculator/XCalculator';
+import XLogin from './XLogin/XLogin';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ function App() {
         <Route  path="xDisplayName" exact Component={()=><XDisplayName />} />
         <Route  path="xCounter" exact Component={()=><XCounter />} />
         <Route  path="XCalculator" exact Component={()=><XCalculator />} />
+        <Route  path="XLogin" exact Component={()=><XLogin />} />
       </Routes>
     </BrowserRouter>
   )
