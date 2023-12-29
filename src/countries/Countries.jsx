@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import "./countries.css";
 import Card from '../Card/Card';
 
-const Countries = () => {
+const Countries = (props) => {
+    const { parentData, parent } = props;
+    
     const [data, setData] = useState([]);
 
     useEffect(()=>{
-        fetchCountries();
+        if(parentData) return; // data is given from XCountriesSearch
+
+        fetchCountries(); // else create your own data
     }, [])
 
     const fetchCountries = async ()=>{
@@ -23,12 +27,11 @@ const Countries = () => {
         }
         // console.log(data);
     }
+
     const displayFLags = ()=>{
-        let arr = [];
-        data?.forEach(cou=>{
-            arr.push(<Card image={cou?.flags?.png} name={cou?.name?.common}/>)
-        })
-        return (arr)
+        let arr = parent ? parentData : data;
+        return arr?.map(cou=> <Card image={cou?.flags?.png} name={cou?.name?.common}/>);
+
     }
 
     return (
