@@ -3,12 +3,12 @@ import "./countries.css";
 import Card from '../Card/Card';
 
 const Countries = (props) => {
-    // const { parentData, parent } = props;
+    const { parentData, parent } = props;
     
     const [data, setData] = useState([]);
 
     useEffect(()=>{
-        // if(parent) return; // data is given from XCountriesSearch
+        if(parentData) return; // data is given from XCountriesSearch
 
         fetchCountries(); // else create your own data
     }, [])
@@ -29,8 +29,8 @@ const Countries = (props) => {
     }
 
     const displayFLags = ()=>{
-        // let arr = parent ? [...parentData] : [...data];
-        return data?.map(cou=> <Card image={cou?.flags?.png} name={cou?.name?.common}/>);
+        let arr = parent ? parentData : data;
+        return arr?.map(cou=> <Card image={cou?.flags?.png} name={cou?.name?.common}/>);
 
     }
 
