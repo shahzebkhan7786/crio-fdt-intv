@@ -5,7 +5,7 @@ const Card = (props) => {
     return (
         <div className='card' style={{flexDirection: 'column'}}>
             <img src={image} alt={`${name} flag`} />
-            <h4>{name}</h4>
+            <h2>{name}</h2>
         </div>
     );
 };
