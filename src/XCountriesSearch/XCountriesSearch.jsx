@@ -12,7 +12,7 @@ const XCountriesSearch = () => {
     }, [])
 
     useEffect(()=>{
-        if(!searchText?.length) return setFilteredData(null);
+        // if(!searchText?.length) return setFilteredData(null);
         searchCountries();
     }, [searchText])
 
