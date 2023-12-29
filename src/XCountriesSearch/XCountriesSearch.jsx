@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Countries from '../countries/Countries';
+import Card from '../Card/Card';
 
 const XCountriesSearch = () => {
     const [searchText, setSearchText] = useState("");
@@ -59,10 +60,19 @@ const XCountriesSearch = () => {
         setFilteredData(filtered)
     }
 
+    const displayFLags = ()=>{
+        let arr = filteredData ? [...filteredData] : [...data];
+        return arr?.map(cou=> <Card image={cou?.flags?.png} name={cou?.name?.common}/>);
+
+    }
+
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             <input style={{width: "300px", marginTop: "1rem"}} type='text' value={searchText} onChange={e=> setSearchText(e.target.value)}/>
-            <Countries parentData={filteredData ? filteredData : data} parent="XCountriesSearch"/>
+            
+            <div className='countriesBody'>
+                {displayFLags()}
+            </div>
         </div>
     );
 };
