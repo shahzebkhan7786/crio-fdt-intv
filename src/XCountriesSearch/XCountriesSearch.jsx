@@ -37,26 +37,29 @@ const XCountriesSearch = () => {
     //I A
     const searchCountries = ()=>{
         //name.common
-        const filtered = data.filter(i=>{
-            // i?.name?.common has searchText return true
-            const countryName = i?.name?.common;
-            if(countryName.length < searchText.length) return false;
+        // const filtered = data.filter(i=>{
+        //     // i?.name?.common has searchText return true
+        //     const countryName = i?.name?.common;
+        //     if(countryName.length < searchText.length) return false;
 
-            let searchPtr = 0, countryPtr = 0;
-            while(countryPtr < countryName.length){
-                if(countryName[countryPtr]?.toLocaleLowerCase() === searchText[searchPtr]?.toLocaleLowerCase()){
-                    if(searchPtr === searchText.length-1) return true;
-                    countryPtr++;
-                    searchPtr++;
-                }else{
-                    searchPtr=0;
-                    countryPtr++;
-                }
-            }
-            return false;
-        })
+        //     let searchPtr = 0, countryPtr = 0;
+        //     while(countryPtr < countryName.length){
+        //         if(countryName[countryPtr]?.toLocaleLowerCase() === searchText[searchPtr]?.toLocaleLowerCase()){
+        //             if(searchPtr === searchText.length-1) return true;
+        //             countryPtr++;
+        //             searchPtr++;
+        //         }else{
+        //             searchPtr=0;
+        //             countryPtr++;
+        //         }
+        //     }
+        //     return false;
+        // })
 
-        setFilteredData(filtered)
+        const filteredCountries = data.filter((country) =>
+            country.name.common.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setFilteredData(filteredCountries)
     }
 
     const displayFLags = ()=>{
