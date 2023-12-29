@@ -59,9 +59,8 @@ const XCountriesSearch = () => {
     }
 
     return (
-        <div>
-            <input type='text' value={searchText} onChange={e=> setSearchText(e.target.value)}/>
-            <h1>{searchText}</h1>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <input style={{width: "300px", marginTop: "1rem"}} type='text' value={searchText} onChange={e=> setSearchText(e.target.value)}/>
             <Countries parentData={filteredData.length ? filteredData : data} parent="XCountriesSearch"/>
         </div>
     );
