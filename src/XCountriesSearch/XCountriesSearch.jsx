@@ -70,9 +70,13 @@ const XCountriesSearch = () => {
 
     }
 
+    const handleSearch = evt=>{
+        setSearchText(evt.target.value)
+    }
+
     return (
         <div >
-            <input  type='text' value={searchText} onChange={e=> setSearchText(e.target.value)}/>
+            <input  type='text' value={searchText} onChange={handleSearch}/>
             {/* <div className='countriesBody' style={{display: "flex", flexDirection: "column", alignItems: "center"}}> */}
             <div className='countriesBody'>
                 {displayFLags()}
