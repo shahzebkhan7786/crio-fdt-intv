@@ -89,6 +89,8 @@ const XPagination = () => {
             }
         }catch(error){
             console.log(error);
+            console.error(error);
+            console.warn(error);
         }
     }
 
