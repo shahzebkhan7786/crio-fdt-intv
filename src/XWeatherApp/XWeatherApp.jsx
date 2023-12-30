@@ -44,20 +44,20 @@ const XWeatherApp = () => {
 
     return (
         <div className='XWeatherApp'>
-            <form onSubmit={handleSubmit}>
+            <div className='searchBar'>
                 <input required value={cityName} onChange={handleChange} type='text' placeholder='Enter city name'/>
-                <button type='submit'>Search</button>
-            </form>
+                <button onClick={handleSubmit}>Search</button>
+            </div>
             {loading && <p>Loading data…</p>}
             {
                 data
                 ?
-                <>
-                <WeatherCard name={"Temperature"} data={`${data?.current?.temp_c}°C`}/>
-                <WeatherCard name={"Humidity"} data={`${data?.current?.humidity}%`}/>
-                <WeatherCard name={"Condition"} data={data?.current?.condition?.text}/>
-                <WeatherCard name={"Wind Speed"} data={`${data?.current?.wind_kph} kph`}/>
-                </>
+                <div className='weather-cards'>
+                    <WeatherCard name={"Temperature"} data={`${data?.current?.temp_c}°C`}/>
+                    <WeatherCard name={"Humidity"} data={`${data?.current?.humidity}%`}/>
+                    <WeatherCard name={"Condition"} data={data?.current?.condition?.text}/>
+                    <WeatherCard name={"Wind Speed"} data={`${data?.current?.wind_kph} kph`}/>
+                </div>
                 :
                 null
             }
