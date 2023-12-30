@@ -59,7 +59,7 @@ const XWeatherApp = () => {
                 :
                 null
             }
-            <p>{loading && "Loading data…"}</p>
+            <p>{loading && "Loading data..."}</p>
             
         </div>
     );
