@@ -11,6 +11,7 @@ import XLogin from './XLogin/XLogin';
 import XStates from './XStates/XStates';
 import XCountriesSearch from './XCountriesSearch/XCountriesSearch';
 import XClassComp from './XClassComp/XClassComp';
+import XPagination from './XPagination/XPagination';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +29,7 @@ function App() {
         <Route  path="XStates" exact Component={()=><XStates />} />
         <Route  path="XCountriesSearch" exact Component={()=><XCountriesSearch />} />
         <Route  path="XClassComp" exact Component={()=><XClassComp />} />
+        <Route  path="XPagination" exact Component={()=><XPagination />} />
       </Routes>
     </BrowserRouter>
   )
