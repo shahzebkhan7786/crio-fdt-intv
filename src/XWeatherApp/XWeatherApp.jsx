@@ -20,7 +20,7 @@ const XWeatherApp = () => {
         evt.preventDefault();
         
         setLoading(true);
-
+        setData(null);
         try{
             const res = await axios.get(endpoint, {
                 params: {
@@ -35,7 +35,6 @@ const XWeatherApp = () => {
             }
         }catch(error){
             alert("Failed to fetch weather data");
-        
         }finally{
             setLoading(false)
         }
