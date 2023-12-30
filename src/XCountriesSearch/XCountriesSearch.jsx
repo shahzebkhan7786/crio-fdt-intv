@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 
 const XCountriesSearch = () => {
     const [searchText, setSearchText] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
+    const [filteredData, setFilteredData] = useState(null);
     const [data, setData] = useState([]);
 
     useEffect(()=>{
@@ -55,6 +55,7 @@ const XCountriesSearch = () => {
         //     }
         //     return false;
         // })
+        if(!searchText) return setFilteredData(null);
 
         const filteredCountries = data.filter((country) =>
             country.name.common.toLowerCase().includes(searchText.toLowerCase())
@@ -63,7 +64,8 @@ const XCountriesSearch = () => {
     }
 
     const displayFLags = ()=>{
-        let arr = filteredData && filteredData?.length ? filteredData : data;
+        // let arr = filteredData && filteredData?.length ? filteredData : data;
+        let arr = filteredData ? filteredData : data;
         return arr?.map(cou=> <Card keyy={cou?.cca3} image={cou?.flags?.png} name={cou?.name?.common}/>);
 
     }
@@ -71,7 +73,7 @@ const XCountriesSearch = () => {
     return (
         <div >
             <input  type='text' value={searchText} onChange={e=> setSearchText(e.target.value)}/>
-                {displayFLags()}
+            {displayFLags()}
             {/* <div className='countriesBody' style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             </div> */}
         </div>

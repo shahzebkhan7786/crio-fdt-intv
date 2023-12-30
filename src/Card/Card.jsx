@@ -3,7 +3,7 @@ import "./card.css"
 const Card = (props) => {
     const { image, name, keyy} = props;
     return (
-        <div key={keyy} className='card' style={{flexDirection: 'column'}}>
+        <div key={keyy} className='card container' style={{flexDirection: 'column'}}>
             <img src={image} alt={`${name} flag`} />
             <h2>{name}</h2>
         </div>
