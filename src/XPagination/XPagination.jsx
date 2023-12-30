@@ -88,9 +88,6 @@ const XPagination = () => {
                 throw new Error(`${res.status} ${res.statusText}`);
             }
         }catch(error){
-            console.log(error);
-            console.error(error);
-            console.warn(error);
             alert("failed to fetch data");
         }
     }
