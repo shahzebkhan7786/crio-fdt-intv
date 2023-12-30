@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Countries from '../countries/Countries';
 import Card from '../Card/Card';
+import "./XCountriesSearch.css";
 
 const XCountriesSearch = () => {
     const [searchText, setSearchText] = useState("");
@@ -75,10 +76,10 @@ const XCountriesSearch = () => {
     }
 
     return (
-        <div >
+        <div className='XCountriesSearch'>
             <input  type='text' value={searchText} onChange={handleSearch}/>
             {/* <div className='countriesBody' style={{display: "flex", flexDirection: "column", alignItems: "center"}}> */}
-            <div className='countriesBody'>
+            <div className='countriesBody countriesWrapper'>
                 {displayFLags()}
             </div>
         </div>
