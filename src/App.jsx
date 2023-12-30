@@ -15,6 +15,7 @@ import XPagination from './XPagination/XPagination';
 import XWeatherApp from './XWeatherApp/XWeatherApp';
 import XSpellCheck from './XSpellCheck/XSpellCheck';
 import XDictionary from './XDictionary/XDictionary';
+import XTable from './XTable/XTable';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -36,6 +37,7 @@ function App() {
         <Route  path="XWeatherApp" exact Component={()=><XWeatherApp />} />
         <Route  path="XSpellCheck" exact Component={()=><XSpellCheck />} />
         <Route  path="XDictionary" exact Component={()=><XDictionary />} />
+        <Route  path="XTable" exact Component={()=><XTable />} />
       </Routes>
     </BrowserRouter>
   )
