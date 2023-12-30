@@ -4,7 +4,7 @@ const WeatherCard = (props) => {
     const { name, data } = props;
     return (
         <div className='weather-card'>
-            <h4>{name}</h4>
+            <h2>{name}</h2>
             <p>{data}</p>
         </div>
     );

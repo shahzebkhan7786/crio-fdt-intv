@@ -53,10 +53,10 @@ const XWeatherApp = () => {
                 data
                 ?
                 <>
-                <WeatherCard name={"Temperature"} data={data?.current?.temp_c}/>
-                <WeatherCard name={"Humidity"} data={data?.current?.humidity}/>
+                <WeatherCard name={"Temperature"} data={`${data?.current?.temp_c}°C`}/>
+                <WeatherCard name={"Humidity"} data={`${data?.current?.humidity}%`}/>
                 <WeatherCard name={"Condition"} data={data?.current?.condition?.text}/>
-                <WeatherCard name={"Wind Speed"} data={data?.current?.wind_kph}/>
+                <WeatherCard name={"Wind Speed"} data={`${data?.current?.wind_kph} kph`}/>
                 </>
                 :
                 null
