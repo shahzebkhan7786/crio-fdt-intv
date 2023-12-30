@@ -91,6 +91,7 @@ const XPagination = () => {
             console.log(error);
             console.error(error);
             console.warn(error);
+            alert("failed to fetch data");
         }
     }
 
