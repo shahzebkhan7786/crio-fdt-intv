@@ -66,7 +66,7 @@ const XCountriesSearch = () => {
     const displayFLags = ()=>{
         // let arr = filteredData && filteredData?.length ? filteredData : data;
         let arr = filteredData ? filteredData : data;
-        return arr?.map(cou=> <Card keyy={cou?.cca3} image={cou?.flags?.png} name={cou?.name?.common}/>);
+        return arr?.map(cou=> <Card key={cou?.cca3} image={cou?.flags?.png} name={cou?.name?.common}/>);
 
     }
 
