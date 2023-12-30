@@ -10,6 +10,7 @@ import XCalculator from './XCalculator/XCalculator';
 import XLogin from './XLogin/XLogin';
 import XStates from './XStates/XStates';
 import XCountriesSearch from './XCountriesSearch/XCountriesSearch';
+import XClassComp from './XClassComp/XClassComp';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +27,7 @@ function App() {
         <Route  path="XLogin" exact Component={()=><XLogin />} />
         <Route  path="XStates" exact Component={()=><XStates />} />
         <Route  path="XCountriesSearch" exact Component={()=><XCountriesSearch />} />
+        <Route  path="XClassComp" exact Component={()=><XClassComp />} />
       </Routes>
     </BrowserRouter>
   )
