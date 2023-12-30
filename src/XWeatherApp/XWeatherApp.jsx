@@ -48,7 +48,6 @@ const XWeatherApp = () => {
                 <input required value={cityName} onChange={handleChange} type='text' placeholder='Enter city name'/>
                 <button onClick={handleSubmit}>Search</button>
             </div>
-            {loading && <p>Loading data…</p>}
             {
                 data
                 ?
@@ -61,6 +60,7 @@ const XWeatherApp = () => {
                 :
                 null
             }
+            {loading && <p>Loading data…</p>}
         </div>
     );
 };
