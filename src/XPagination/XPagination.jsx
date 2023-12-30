@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./XPagination.css";
 import axios from 'axios';
 
-const endpoint = "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/memberss.json";
+const endpoint = "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
 
 const Pagination = ({ currentPage, itemsPerPage, totalItems, paginate }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -88,7 +88,7 @@ const XPagination = () => {
                 throw new Error(`${res.status} ${res.statusText}`);
             }
         }catch(error){
-            console.log(error.message);
+            console.log(error);
         }
     }
 
