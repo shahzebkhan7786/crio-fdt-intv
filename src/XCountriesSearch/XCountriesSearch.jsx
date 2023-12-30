@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Countries from '../countries/Countries';
-import Card from '../Card/Card';
+// import Card from '../Card/Card';
 import "./XCountriesSearch.css";
 
 const XCountriesSearch = () => {
@@ -63,6 +63,15 @@ const XCountriesSearch = () => {
         );
         setFilteredData(filteredCountries)
     }
+    const Card = (props) => {
+        const { image, name} = props;
+        return (
+            <div className='card container' style={{flexDirection: 'column'}}>
+                <img src={image} alt={`${name} flag`} />
+                <h2>{name}</h2>
+            </div>
+        );
+    };
 
     const displayFLags = ()=>{
         // let arr = filteredData && filteredData?.length ? filteredData : data;
