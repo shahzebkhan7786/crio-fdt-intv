@@ -73,9 +73,10 @@ const XCountriesSearch = () => {
     return (
         <div >
             <input  type='text' value={searchText} onChange={e=> setSearchText(e.target.value)}/>
-            {displayFLags()}
-            {/* <div className='countriesBody' style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-            </div> */}
+            {/* <div className='countriesBody' style={{display: "flex", flexDirection: "column", alignItems: "center"}}> */}
+            <div className='countriesBody'>
+                {displayFLags()}
+            </div>
         </div>
     );
 };
