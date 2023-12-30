@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./XPagination.css";
 import axios from 'axios';
 
-const endpoint = "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/memberss.json";
+const endpoint = "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
 
 const Pagination = ({ currentPage, itemsPerPage, totalItems, paginate }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -73,8 +73,7 @@ const DataTable = ({ currentItems }) => {
 const XPagination = () => {
     const [data, setData] = useState();
     const [currentPage, setCurrentPage] = useState(1);
-    const [currentItems, setCurrentItems] = useState();
-    const [errorAlert, setErrorAlert] = useState(false);
+    const [currentItems, setCurrentItems] = useState()
 
     useEffect(()=>{
         fetchData();
@@ -89,7 +88,7 @@ const XPagination = () => {
                 throw new Error(`${res.status} ${res.statusText}`);
             }
         }catch(error){
-            setErrorAlert(true)
+            alert(error.message);
         }
     }
 
@@ -121,16 +120,8 @@ const XPagination = () => {
     return (
         <div className='XPagination'>
             <h1>Employess Table Data</h1>
-            {
-                errorAlert 
-                ?
-                <h1>Error Fetching Data!</h1>
-                :
-                <>
-                {data && <DataTable currentItems={currentItems} />}
-                <Pagination currentPage={currentPage} itemsPerPage={10}  totalItems ={data?.length} paginate ={paginate}/>
-                </>
-            }
+            {data && <DataTable currentItems={currentItems} />}
+            <Pagination currentPage={currentPage} itemsPerPage={10}  totalItems ={data?.length} paginate ={paginate}/>
         </div>
     );
 };
