@@ -13,6 +13,7 @@ const XWeatherApp = () => {
 
     const handleChange = evt=>{
         setCityName(evt.target.value);
+        setData(null);
     }
 
     const handleSubmit = async evt=>{
@@ -30,9 +31,10 @@ const XWeatherApp = () => {
             if (res.status !== 200) {
                 throw new Error(`${res.status} ${res.statusText}`);
             }
-            console.log(res.data);
+            // console.log(res.data);
             setData(res.data);
         }catch(error){
+            setData(null);
             alert("Failed to fetch weather data");
         }finally{
             setLoading(false)
@@ -50,12 +52,12 @@ const XWeatherApp = () => {
             {
                 data
                 ?
-                <div>
-                    <WeatherCard name={"Temperature"} data={data?.current?.temp_c}/>
-                    <WeatherCard name={"Humidity"} data={data?.current?.humidity}/>
-                    <WeatherCard name={"Condition"} data={data?.current?.condition?.text}/>
-                    <WeatherCard name={"Wind Speed"} data={data?.current?.wind_kph}/>
-                </div>
+                <>
+                <WeatherCard name={"Temperature"} data={data?.current?.temp_c}/>
+                <WeatherCard name={"Humidity"} data={data?.current?.humidity}/>
+                <WeatherCard name={"Condition"} data={data?.current?.condition?.text}/>
+                <WeatherCard name={"Wind Speed"} data={data?.current?.wind_kph}/>
+                </>
                 :
                 null
             }
