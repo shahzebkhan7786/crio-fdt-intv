@@ -28,14 +28,14 @@ const XWeatherApp = () => {
                     q: cityName
                 }
             })
-            if (res.status !== 200) {
+            if (res.status == 200) {
+                setData(res.data);
+            }else{
                 throw new Error(`${res.status} ${res.statusText}`);
             }
-            // console.log(res.data);
-            setData(res.data);
         }catch(error){
-            setData(null);
             alert("Failed to fetch weather data");
+        
         }finally{
             setLoading(false)
         }
@@ -45,8 +45,8 @@ const XWeatherApp = () => {
     return (
         <div className='XWeatherApp'>
             <form onSubmit={handleSubmit}>
-            <input required value={cityName} onChange={handleChange} type='text' placeholder='Enter city name'/>
-            <button type='submit'>Search</button>
+                <input required value={cityName} onChange={handleChange} type='text' placeholder='Enter city name'/>
+                <button type='submit'>Search</button>
             </form>
             {loading && <p>Loading data…</p>}
             {
