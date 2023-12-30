@@ -13,7 +13,7 @@ const XWeatherApp = () => {
 
     const handleChange = evt=>{
         setCityName(evt.target.value);
-        setData(null);
+        // setData(null);
     }
 
     const handleSubmit = async evt=>{
