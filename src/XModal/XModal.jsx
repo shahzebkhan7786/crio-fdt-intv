@@ -35,7 +35,7 @@ const XModal = () => {
             phone: "",
             dob: ""
         });
-        
+
         setModalON(false);
     }
 
@@ -43,28 +43,30 @@ const XModal = () => {
         const {value, name} = evt.target;
         setFormData({...formData, [name]: value});
     }
+    const handleButtonClick = evt=>{
+        evt.stopPropagation()
+        setModalON(true);
+    }
     return (
-        <div className='Xmodal'>
+        <div className='modal' onClick={()=> setModalON(false)}>
             <h1>User Details Modal</h1>
-            <button onClick={()=> setModalON(true)}>Open Form</button>
+            <button onClick={handleButtonClick}>Open Form</button>
             {
                 modalON 
                 ?
-                <div className="modal" onClick={()=> setModalON(false)}>
-                    <div className="modal-content" onClick={e=> e.stopPropagation()}>
-                        <h2>Fill Details</h2>
-                        <form onSubmit={handleSubmit}>
-                                <label htmlFor='username'>Username:</label>
-                                <input onChange={handleChange} required value={formData.username} name='username' id='username' type='text'/>
-                                <label htmlFor='email'>Email Address:</label>
-                                <input onChange={handleChange} required value={formData.email} name='email' id='email' type='email'/>
-                                <label htmlFor='phone'>Phone Number:</label>
-                                <input onChange={handleChange} required value={formData.phone} name='phone' id='phone' type='number'/>
-                                <label htmlFor='dob'>Date of birth:</label>
-                                <input onChange={handleChange} required value={formData.dob} name='dob' id='dob' type='date'/>
-                                <button className='submit-button' type='submit'>Submit</button>
-                        </form>
-                    </div>
+                <div className="modal-content" onClick={e=> e.stopPropagation()}>
+                    <h2>Fill Details</h2>
+                    <form onSubmit={handleSubmit}>
+                            <label htmlFor='username'>Username:</label>
+                            <input onChange={handleChange} required value={formData.username} name='username' id='username' type='text'/>
+                            <label htmlFor='email'>Email Address:</label>
+                            <input onChange={handleChange} required value={formData.email} name='email' id='email' type='email'/>
+                            <label htmlFor='phone'>Phone Number:</label>
+                            <input onChange={handleChange} required value={formData.phone} name='phone' id='phone' type='number'/>
+                            <label htmlFor='dob'>Date of birth:</label>
+                            <input onChange={handleChange} required value={formData.dob} name='dob' id='dob' type='date'/>
+                            <button className='submit-button' type='submit'>Submit</button>
+                    </form>
                 </div>
                 :
                 null
