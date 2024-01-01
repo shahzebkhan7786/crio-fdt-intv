@@ -69,7 +69,7 @@ const XModal = () => {
                     </form>
                 </div>
                 :
-                null
+                <button className='submit-button' type='submit'>Submit</button>
             }
         </div>
     );
