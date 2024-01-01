@@ -27,12 +27,15 @@ const XModal = () => {
             error = true;
         }
         
-        if(!error) setFormData({
-            username: "",
-            email: "",
-            phone: "",
-            dob: ""
-        });
+        if(!error) {
+                setFormData({
+                username: "",
+                email: "",
+                phone: "",
+                dob: ""
+            });
+            setModalON(false);
+        }
     }
 
     const handleChange = evt=>{
