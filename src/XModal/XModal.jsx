@@ -35,7 +35,7 @@ const XModal = () => {
             phone: "",
             dob: ""
         });
-        setModalON(false);
+        setModalON(prev=> !prev);
     }
 
     const handleChange = evt=>{
@@ -49,7 +49,7 @@ const XModal = () => {
             {
                 modalON 
                 ?
-                <div className="modal" onClick={()=> setModalON(false)}>
+                <div className="modal" onClick={()=> setModalON(prev=> !prev)}>
                     <div className="modal-content" onClick={e=> e.stopPropagation()}>
                         <h2>Fill Details</h2>
                         <form onSubmit={handleSubmit}>
