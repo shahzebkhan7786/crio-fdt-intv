@@ -42,6 +42,10 @@ const XModal = () => {
         const {value, name} = evt.target;
         setFormData({...formData, [name]: value});
     }
+    const handleSubmit2 = evt=> {
+        evt.preventDefault();
+        setModalON(false);
+    } 
     return (
         <div className='Xmodal'>
             <h1>User Details Modal</h1>
@@ -69,15 +73,15 @@ const XModal = () => {
                 //<div className="modal" onClick={()=> setModalON(false)}>
                     <div className="modal-content" onClick={e=> e.stopPropagation()}>
                         <h2>Fill Details</h2>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit2}>
                                 <label htmlFor='username'>Username:</label>
-                                <input onChange={handleChange} required value={formData.username} name='username' id='username' type='text'/>
+                                <input onChange={handleChange} value={formData.username} name='username' id='username' type='text'/>
                                 <label htmlFor='email'>Email Address:</label>
-                                <input onChange={handleChange} required value={formData.email} name='email' id='email' type='email'/>
+                                <input onChange={handleChange} value={formData.email} name='email' id='email' type='email'/>
                                 <label htmlFor='phone'>Phone Number:</label>
-                                <input onChange={handleChange} required value={formData.phone} name='phone' id='phone' type='number'/>
+                                <input onChange={handleChange} value={formData.phone} name='phone' id='phone' type='number'/>
                                 <label htmlFor='dob'>Date of birth:</label>
-                                <input onChange={handleChange} required value={formData.dob} name='dob' id='dob' type='date'/>
+                                <input onChange={handleChange} value={formData.dob} name='dob' id='dob' type='date'/>
                                 <button className='submit-button' type='submit'>Submit</button>
                         </form>
                     </div>
