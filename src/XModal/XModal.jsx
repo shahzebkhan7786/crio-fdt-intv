@@ -35,7 +35,7 @@ const XModal = () => {
             phone: "",
             dob: ""
         });
-        setModalON(prev=> !prev);
+        setModalON(false);
     }
 
     const handleChange = evt=>{
@@ -66,7 +66,22 @@ const XModal = () => {
                     </div>
                 </div>
                 :
-                null
+                //<div className="modal" onClick={()=> setModalON(false)}>
+                    <div className="modal-content" onClick={e=> e.stopPropagation()}>
+                        <h2>Fill Details</h2>
+                        <form onSubmit={handleSubmit}>
+                                <label htmlFor='username'>Username:</label>
+                                <input onChange={handleChange} required value={formData.username} name='username' id='username' type='text'/>
+                                <label htmlFor='email'>Email Address:</label>
+                                <input onChange={handleChange} required value={formData.email} name='email' id='email' type='email'/>
+                                <label htmlFor='phone'>Phone Number:</label>
+                                <input onChange={handleChange} required value={formData.phone} name='phone' id='phone' type='number'/>
+                                <label htmlFor='dob'>Date of birth:</label>
+                                <input onChange={handleChange} required value={formData.dob} name='dob' id='dob' type='date'/>
+                                <button className='submit-button' type='submit'>Submit</button>
+                        </form>
+                    </div>
+                //</div>
             }
         </div>
     );
