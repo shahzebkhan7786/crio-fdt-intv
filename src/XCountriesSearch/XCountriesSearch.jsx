@@ -84,6 +84,7 @@ const XCountriesSearch = () => {
     }
 
     return (
+        data &&
         <div className='XCountriesSearch'>
             <input  type='text' value={searchText} onChange={handleSearch}/>
             {/* <div className='countriesBody' style={{display: "flex", flexDirection: "column", alignItems: "center"}}> */}
