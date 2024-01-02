@@ -29,7 +29,7 @@ const XWeatherApp = () => {
                 }
             })
             
-            if(res.status !== 200) throw new Error(`${res.status} ${res.statusText}`);
+            if(res.status !== 200 || res.statusCode === 500) throw new Error(`${res.status} ${res.statusText}`);
             else setData(res.data);
         }catch(error){
             alert("Failed to fetch weather data");
