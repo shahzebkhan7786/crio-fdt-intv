@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Countries from '../countries/Countries';
+import axios from "axios";
 // import Card from '../Card/Card';
 import "./XCountriesSearch.css";
 
 const XCountriesSearch = () => {
+    const [data, setData] = useState([]);
     const [searchText, setSearchText] = useState("");
     const [filteredData, setFilteredData] = useState(null);
-    const [data, setData] = useState([]);
 
     useEffect(()=>{
         fetchCountries();
@@ -19,12 +20,12 @@ const XCountriesSearch = () => {
     const fetchCountries = async ()=>{
         const url = "https://restcountries.com/v3.1/all"
         try{
-            const res = await fetch(url);
-            const data = await res.json();
-            if (!res.ok) {
+            const res = await axios.get(url);
+            
+            if (res.status !== 200) {
                 throw new Error(`${res.status} ${res.statusText}`);
-              }
-            setData(data)
+            }
+            setData(res.data)
         }catch(error){
             console.error(error);
         }
@@ -37,25 +38,7 @@ const XCountriesSearch = () => {
     //  i
     //I A
     const searchCountries = (str)=>{
-        //name.common
-        // const filtered = data.filter(i=>{
-        //     // i?.name?.common has searchText return true
-        //     const countryName = i?.name?.common;
-        //     if(countryName.length < searchText.length) return false;
-
-        //     let searchPtr = 0, countryPtr = 0;
-        //     while(countryPtr < countryName.length){
-        //         if(countryName[countryPtr]?.toLocaleLowerCase() === searchText[searchPtr]?.toLocaleLowerCase()){
-        //             if(searchPtr === searchText.length-1) return true;
-        //             countryPtr++;
-        //             searchPtr++;
-        //         }else{
-        //             searchPtr=0;
-        //             countryPtr++;
-        //         }
-        //     }
-        //     return false;
-        // })
+        
         if(!str || !str.length) return setFilteredData(null);
 
         // const filteredCountries = ;
