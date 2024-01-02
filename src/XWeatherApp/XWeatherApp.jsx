@@ -28,11 +28,9 @@ const XWeatherApp = () => {
                     q: cityName
                 }
             })
-            if (res.status == 200) {
-                setData(res.data);
-            }else{
-                throw new Error(`${res.status} ${res.statusText}`);
-            }
+            
+            if(res.status !== 200) throw new Error(`${res.status} ${res.statusText}`);
+            else setData(res.data);
         }catch(error){
             alert("Failed to fetch weather data");
         }finally{

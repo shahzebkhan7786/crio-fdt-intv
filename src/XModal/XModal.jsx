@@ -70,7 +70,7 @@ const XModal = () => {
                     </div>
                 </div>
                 :
-                <></>
+                null
             }
         </div>
     );
