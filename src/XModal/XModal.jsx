@@ -36,8 +36,11 @@ const XModal = () => {
             dob: ""
         });
         setModalON(false);
-    }
 
+        
+
+    }
+    
     const handleChange = evt=>{
         const {value, name} = evt.target;
         setFormData({...formData, [name]: value});
@@ -67,7 +70,7 @@ const XModal = () => {
                     </div>
                 </div>
                 :
-                null
+                <></>
             }
         </div>
     );
