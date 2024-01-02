@@ -12,9 +12,9 @@ const XCountriesSearch = () => {
         fetchCountries();
     }, [])
 
-    useEffect(()=>{
-        searchCountries();
-    }, [searchText])
+    // useEffect(()=>{
+        // searchCountries();
+    // }, [searchText])
 
     const fetchCountries = async ()=>{
         const url = "https://restcountries.com/v3.1/all"
@@ -36,7 +36,7 @@ const XCountriesSearch = () => {
 
     //  i
     //I A
-    const searchCountries = ()=>{
+    const searchCountries = (str)=>{
         //name.common
         // const filtered = data.filter(i=>{
         //     // i?.name?.common has searchText return true
@@ -56,10 +56,10 @@ const XCountriesSearch = () => {
         //     }
         //     return false;
         // })
-        if(!searchText) return setFilteredData(null);
+        if(!str || !str.length) return setFilteredData(null);
 
         const filteredCountries = data.filter((country) =>
-            country.name.common.toLowerCase().includes(searchText.toLowerCase())
+            country.name.common.toLowerCase().includes(str.toLowerCase())
         );
         setFilteredData(filteredCountries)
     }
@@ -82,6 +82,7 @@ const XCountriesSearch = () => {
 
     const handleSearch = evt=>{
         setSearchText(evt.target.value)
+        searchCountries(evt.target.value);
     }
 
     return (
