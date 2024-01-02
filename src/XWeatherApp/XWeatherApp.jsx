@@ -1,66 +1,103 @@
-import React, { useRef, useState } from 'react';
-import "./XWeatherApp.css";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import WeatherCard from './WeatherCard';
+import "./WeatherApp.css";
 
-const endpoint = "https://api.weatherapi.com/v1/current.json";
-const apiKey = "09e3bcd598154fd4b57162328232310";
+const SearchBar = ({ onSearch }) => {
+  const [city, setCity] = useState("");
 
-const XWeatherApp = () => {
-    const [cityName, setCityName] = useState("");
-    const [data, setData] = useState();
-    const [loading, setLoading] = useState(false)
+  const handleSearch = () => {
+    onSearch(city);
+  };
 
-    const handleChange = evt=>{
-        setCityName(evt.target.value);
-        // setData(null);
-    }
-
-    const handleSubmit = async evt=>{
-        evt.preventDefault();
-        
-        setLoading(true);
-        setData(null);
-        try{
-            const res = await axios.get(endpoint, {
-                params: {
-                    key: apiKey,
-                    q: cityName
-                }
-            })
-            
-            if(res.status !== 200 || res.statusCode === 500) throw new Error(`${res.status} ${res.statusText}`);
-            else setData(res.data);
-        }catch(error){
-            alert("Failed to fetch weather data");
-        }finally{
-            setLoading(false)
-        }
-    }
-    
-
-    return (
-        <div className='XWeatherApp'>
-            <div className='searchBar'>
-                <input required value={cityName} onChange={handleChange} type='text' placeholder='Enter city name'/>
-                <button onClick={handleSubmit}>Search</button>
-            </div>
-            {
-                data
-                ?
-                <div className='weather-cards'>
-                    <WeatherCard name={"Temperature"} data={`${data?.current?.temp_c}°C`}/>
-                    <WeatherCard name={"Humidity"} data={`${data?.current?.humidity}%`}/>
-                    <WeatherCard name={"Condition"} data={data?.current?.condition?.text}/>
-                    <WeatherCard name={"Wind Speed"} data={`${data?.current?.wind_kph} kph`}/>
-                </div>
-                :
-                null
-            }
-            <p>{loading && "Loading data..."}</p>
-            
-        </div>
-    );
+  return (
+    <div className="search-bar">
+      <input
+        type="text"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="Enter city name"
+      />
+      <button onClick={handleSearch}>Search</button>
+    </div>
+  );
 };
 
-export default XWeatherApp;
+const WeatherCard = ({ title, data }) => {
+  return (
+    <div className="weather-card">
+      <h3>{title}</h3>
+      <p>{data}</p>
+    </div>
+  );
+};
+
+const WeatherDisplay = ({ city }) => {
+  const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (city) {
+      setLoading(true);
+      axios
+        .get(`https://api.weatherapi.com/v1/current.json`, {
+          params: {
+            key: "cf6cae627141447e9e6113102230410",
+            q: city
+          }
+        })
+        .then((response) => {
+          setWeatherData(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data: ", error);
+          alert("Failed to fetch weather data");
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  }, [city]);
+
+  return (
+    <div className="weather-display">
+      {loading && <p>Loading data...</p>}
+      {!loading && weatherData && (
+        <div className="weather-cards">
+          <WeatherCard
+            title="Temperature"
+            data={`${weatherData.current.temp_c}°C`}
+          />
+          <WeatherCard
+            title="Humidity"
+            data={`${weatherData.current.humidity}%`}
+          />
+          <WeatherCard
+            title="Condition"
+            data={weatherData.current.condition.text}
+          />
+          <WeatherCard
+            title="Wind Speed"
+            data={`${weatherData.current.wind_kph} kph`}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+function App() {
+  const [city, setCity] = useState("");
+
+  const handleSearch = (searchCity) => {
+    setCity(searchCity);
+  };
+
+  return (
+    <div className="App">
+      <SearchBar onSearch={handleSearch} />
+      <WeatherDisplay city={city} />
+    </div>
+  );
+}
+
+export default App;
