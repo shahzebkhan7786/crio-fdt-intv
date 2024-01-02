@@ -58,10 +58,8 @@ const XCountriesSearch = () => {
         // })
         if(!str || !str.length) return setFilteredData(null);
 
-        const filteredCountries = data.filter((country) =>
-            country.name.common.toLowerCase().includes(str.toLowerCase())
-        );
-        setFilteredData(filteredCountries)
+        // const filteredCountries = ;
+        setFilteredData(data.filter((country) => country.name.common.toLowerCase().includes(str.toLowerCase())))
     }
     const Card = (props) => {
         const { image, name} = props;
