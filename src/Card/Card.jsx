@@ -1,10 +1,12 @@
 import React from 'react';
-import "./card.css"
-const Card = (props) => {
-    const { image, name} = props;
+import "./card.css";
+
+const Card = ({ image, name }) => {
+    const fallbackImage = "https://via.placeholder.com/150?text=No+Flag";
+
     return (
-        <div className='card container' style={{flexDirection: 'column'}}>
-            <img src={image} alt={`${name} flag`} />
+        <div className='card container' style={{ flexDirection: 'column' }}>
+            <img src={image || fallbackImage} alt={`${name} flag`} />
             <h2>{name}</h2>
         </div>
     );
