@@ -6,7 +6,10 @@ const Card = ({ image, name }) => {
 
     return (
         <div className='card container' style={{ flexDirection: 'column' }}>
-            <img src={image || fallbackImage} alt={`${name} flag`} />
+            <img
+                src={image || fallbackImage}
+                alt={name ? `${name} flag` : "Country flag"}
+            />
             <h2>{name}</h2>
         </div>
     );
