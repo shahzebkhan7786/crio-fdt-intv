@@ -18,7 +18,7 @@ const XCountriesSearch = () => {
     // }, [searchText])
 
     const fetchCountries = async ()=>{
-        const url = "https://restcountries.com/v3.1/all"
+        const url = "https://countries-search-data-prod-812920491762.asia-south1.run.app/countries"
         try{
             const res = await axios.get(url);
             
