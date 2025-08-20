@@ -30,7 +30,7 @@ const XCountriesSearch = () => {
             setFilteredData(null);
         } else {
             const filtered = data.filter(country =>
-                country?.common?.toLowerCase().includes(searchText.toLowerCase())
+                country?.name?.common?.toLowerCase().includes(searchText.toLowerCase())
             );
             setFilteredData(filtered);
         }
@@ -43,15 +43,19 @@ const XCountriesSearch = () => {
 
     // Render country cards
     const displayFlags = () => {
-        const countriesToDisplay = filteredData || data;
+        const countriesToDisplay = filteredData ?? data;
+
+        if (filteredData && filteredData.length === 0) {
+            return <div>No results found</div>; // ✅ Fix Test Case 6
+        }
 
         return countriesToDisplay.map((country, index) => {
-            const image = country?.png || "/no-flag.png"; // ✅ updated
-            const name = country?.common || "Unnamed Country"; // ✅ updated
+            const image = country?.flags?.png || country?.flags?.svg || "/no-flag.png"; // ✅ fixed
+            const name = country?.name?.common || "Unnamed Country"; // ✅ fixed
 
             return (
                 <Card
-                    key={index}  // fallback key since no cca3 in API
+                    key={country?.cca3 || index}  // use cca3 if available
                     image={image}
                     name={name}
                 />
