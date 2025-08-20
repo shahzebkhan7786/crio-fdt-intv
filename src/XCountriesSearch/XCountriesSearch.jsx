@@ -15,11 +15,6 @@ const XCountriesSearch = () => {
             try {
                 const res = await axios.get(url);
                 console.log("API response:", res.data);
-                // if (res.status === 200) {
-                //     setData(res.data);
-                // } else {
-                //     throw new Error(`${res.status} ${res.statusText}`);
-                // }
                 setData(res.data);
             } catch (error) {
                 console.error("Error fetching countries:", error);
@@ -35,7 +30,7 @@ const XCountriesSearch = () => {
             setFilteredData(null);
         } else {
             const filtered = data.filter(country =>
-                country.name?.common?.toLowerCase().includes(searchText.toLowerCase())
+                country?.common?.toLowerCase().includes(searchText.toLowerCase())
             );
             setFilteredData(filtered);
         }
@@ -50,13 +45,13 @@ const XCountriesSearch = () => {
     const displayFlags = () => {
         const countriesToDisplay = filteredData || data;
 
-        return countriesToDisplay.map(country => {
-            const image = country?.flags?.png || country?.flags?.svg || "/no-flag.png";
-            const name = country?.name?.common || "Unnamed Country";
+        return countriesToDisplay.map((country, index) => {
+            const image = country?.png || "/no-flag.png"; // ✅ updated
+            const name = country?.common || "Unnamed Country"; // ✅ updated
 
             return (
                 <Card
-                    key={country?.cca3}
+                    key={index}  // fallback key since no cca3 in API
                     image={image}
                     name={name}
                 />
