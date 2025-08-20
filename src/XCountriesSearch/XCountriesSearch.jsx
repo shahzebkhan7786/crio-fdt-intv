@@ -14,11 +14,13 @@ const XCountriesSearch = () => {
             const url = "https://countries-search-data-prod-812920491762.asia-south1.run.app/countries";
             try {
                 const res = await axios.get(url);
-                if (res.status === 200) {
-                    setData(res.data);
-                } else {
-                    throw new Error(`${res.status} ${res.statusText}`);
-                }
+                console.log("API response:", res.data);
+                // if (res.status === 200) {
+                //     setData(res.data);
+                // } else {
+                //     throw new Error(`${res.status} ${res.statusText}`);
+                // }
+                setData(res.data);
             } catch (error) {
                 console.error("Error fetching countries:", error);
             }
