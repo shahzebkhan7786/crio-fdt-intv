@@ -49,7 +49,7 @@ const XCountriesSearch = () => {
         const countriesToDisplay = filteredData || data;
 
         return countriesToDisplay.map(country => {
-            const image = country?.flags?.png || country?.flags?.svg || null;
+            const image = country?.flags?.png || country?.flags?.svg || "/no-flag.png";
             const name = country?.name?.common || "Unnamed Country";
 
             return (
