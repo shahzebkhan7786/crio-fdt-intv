@@ -1,11 +1,57 @@
 .XCountriesSearch {
-    text-align: center;
-    padding: 1rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f5f7fa;
+  min-height: 100vh;
 }
 
+/* Search Bar */
+.searchInput {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1.5rem auto;
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Wrapper using Flexbox */
 .countriesWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Each Country Card */
+.country-card {
+  width: 150px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.country-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Flag Image */
+.country-flag {
+  width: 100px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+/* Country Name */
+.country-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
 }
