@@ -1,79 +1,65 @@
-import React, { useEffect, useState } from 'react';
-import axios from "axios";
-import Card from '../Card/Card'; // Ensure the path is correct
+import React, { useEffect, useState } from "react";
 import "./XCountriesSearch.css";
 
 const XCountriesSearch = () => {
-    const [data, setData] = useState([]);
-    const [searchText, setSearchText] = useState("");
-    const [filteredData, setFilteredData] = useState(null);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-    // Fetch countries from API on mount
-    useEffect(() => {
-        const fetchCountries = async () => {
-            const url = "https://countries-search-data-prod-812920491762.asia-south1.run.app/countries";
-            try {
-                const res = await axios.get(url);
-                console.log("API response:", res.data);
-                setData(res.data);
-            } catch (error) {
-                console.error("Error fetching countries:", error);
-            }
-        };
+  // Fetch countries data
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res);
+        setFilteredData(res);
+      })
+      .catch((err) => console.error("Error fetching countries:", err));
+  }, []);
 
-        fetchCountries();
-    }, []);
+  // Handle search input
+  const handleSearch = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchTerm(value);
 
-    // Filter countries based on search text
-    useEffect(() => {
-        if (!searchText) {
-            setFilteredData(null);
-        } else {
-            const filtered = data.filter(country =>
-                country?.common?.toLowerCase().includes(searchText.toLowerCase())
-            );
-            setFilteredData(filtered);
-        }
-    }, [searchText, data]);
-
-    // Handle search input changes
-    const handleSearch = (evt) => {
-        setSearchText(evt.target.value);
-    };
-
-    // Render country cards
-    const displayFlags = () => {
-        const countriesToDisplay = filteredData || data;
-
-        return countriesToDisplay.map((country, index) => {
-            const image = country?.png || "/no-flag.png"; // ✅ updated
-            const name = country?.common || "Unnamed Country"; // ✅ updated
-
-            return (
-                <Card
-                    key={index}  // fallback key since no cca3 in API
-                    image={image}
-                    name={name}
-                />
-            );
-        });
-    };
-
-    if (!data.length) return <div>Loading...</div>;
-
-    return (
-        <div className='XCountriesSearch'>
-            <input
-                type='text'
-                placeholder='Search countries...'
-                value={searchText}
-                onChange={handleSearch}
-            />
-            <div className='countriesBody countriesWrapper'>
-                {displayFlags()}
-            </div>
-        </div>
+    const filtered = data.filter((country) =>
+      country?.name?.common?.toLowerCase().includes(value)
     );
+    setFilteredData(filtered);
+  };
+
+  return (
+    <div className="countriesContainer">
+      {/* Search Box */}
+      <input
+        type="text"
+        placeholder="Search for countries..."
+        value={searchTerm}
+        onChange={handleSearch}
+        className="searchInput"
+      />
+
+      {/* Countries Grid */}
+      <div className="countriesWrapper">
+        {filteredData.map((country) => {
+          const image =
+            country?.flags?.png || country?.flags?.svg || "/no-flag.png";
+          const name = country?.name?.common || "Unnamed Country";
+
+          return (
+            <div key={country?.cca3} className="country-card">
+              <img
+                src={image}
+                alt={`${name} flag`}
+                className="country-flag"
+              />
+              <p className="country-name">{name}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default XCountriesSearch;
